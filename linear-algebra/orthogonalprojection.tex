@@ -11,6 +11,7 @@
 
 \setbeamertemplate{navigation symbols}{}
 % \setbeamercovered{transparent}
+% \setbeameroption{show notes on second screen}
 
 \DeclareMathOperator{\proj}{proj}
 
@@ -25,8 +26,14 @@
     \titlepage
 \end{frame}
 
-\begin{frame}
-    \tableofcontents
+\begin{frame}[allowframebreaks]
+    \begin{columns}
+        \column{0.5\textwidth}
+        \tableofcontents[sections={1-3}]
+
+        \column{0.5\textwidth}
+        \tableofcontents[sections={4-}]
+    \end{columns}
 \end{frame}
 
 \section{Introduction}
@@ -46,8 +53,13 @@
     \only<3->{
         Closest means that the error is orthogonal to $S$.
 
-        % The reason why I am using this meaning rather than the minimizing error meaning is because this meaning is simpler to work with.
-        % Ultimately, it can be proven that both meanings are the same.
+        \note{The reason why I am using this meaning rather than the minimizing error meaning is because this meaning is simpler to work with. Ultimately, it can be proven that both meanings are the same.}
+    }
+
+    \only<4>{
+        \begin{block}{Note}
+            The dimension of subspace S can be anything from 0 to the dimension of the space we are working inside.
+        \end{block}
     }
 \end{frame}
 
@@ -85,11 +97,114 @@
 
 \section{Formulas}
 
-\subsection{Projection onto Vector}
+\subsection{Projection onto a Vector}
 
-\subsection{Projection onto Subspace}
+\begin{frame}
+    \frametitle{Projection onto a Vector}
 
-\subsection{Projection Matrix}
+    \begin{columns}
+        \column{0.5\textwidth}
+        Consider projecting $\vec{b}$ onto $\vec{a}$.
+
+        \note{If $\vec{a}=\vec{0}$, then p will be 0 because p must be in the zero subspace. If $\vec{a}\neq 0$, then we are projecting b onto the line that spans $\vec{a}$.}
+
+        \pause
+
+        What we know:
+        \begin{align*}
+            \vec{e} = \vec{b} - \vec{p} \\
+            \vec{p} = c \vec{a}         \\
+            \vec{e} \cdot \vec{a} = 0
+        \end{align*}
+
+        \column{0.5\textwidth}
+        \note{tell the audience to try this}
+
+        \pause
+        From that:
+        \begin{align*}
+            \alert<+>{\vec{e} = \vec{b} - c \vec{a}                          } \\
+            \alert<+>{(\vec{b} - c \vec{a}) \cdot \vec{a} = 0                } \\
+            \alert<+>{\vec{b} \cdot \vec{a} - c \vec{a} \cdot \vec{a} = 0    } \\
+            \alert<+>{\vec{b} \cdot \vec{a} = c \vec{a} \cdot \vec{a}        } \\
+            \alert<+>{c = \frac{\vec{a} \cdot \vec{b}}{\vec{a} \cdot \vec{a}}} \\
+            \alert<+>{\boxed{\vec{p} = \frac{\vec{a} \cdot \vec{b}}{\vec{a} \cdot \vec{a}} \vec{a}}}
+        \end{align*}
+    \end{columns}
+\end{frame}
+
+\subsection{Projection onto a Subspace}
+
+\begin{frame}
+    \frametitle{Project $\vec{b}$ onto $S$}
+
+    \begin{columns}
+        \column{0.6\textwidth}
+        \pause
+
+        Suppose that $\vec{a}_1, \vec{a}_2, \dots, \vec{a}_n$ are a basis of $S$, let
+        $$
+            A =
+            \begin{bmatrix}
+                \vert     & \vert     &        & \vert     \\
+                \vec{a}_1 & \vec{a}_2 & \hdots & \vec{a}_n \\
+                \vert     & \vert     &        & \vert     \\
+            \end{bmatrix}
+        $$
+        \note{the a vecs are LI, but the A matrix might be rectangular so it isn't invertable}
+        and let $\vec{p} = A\vec{c}$.
+        \note{there is guranteed to be exactly one c for a specific p and A bc p is in S and A has LI cols}
+        We also know:
+        \begin{align*}
+            \vec{e} = \vec{b} - \vec{p} \\
+            \alt<+>{C(A)^\perp = N(A^T)}{A^T \vec{e} = \vec{0}} \note{the orthogonal complement of col space is the left null space}
+        \end{align*}
+
+        \column{0.4\textwidth}
+        \note{tell them to try this proof}
+        \pause
+        Then,
+        \begin{align*}
+            \vec{e} = \vec{b} - A\vec{c}               \\
+            A^T (\vec{b} - A\vec{c}) = \vec{0}         \\
+            A^T \vec{b} - A^T A \vec{c} = \vec{0}      \\
+            A^T \vec{b} = A^T A \vec{c}                \\
+            (A^T A)^{-1} A^T \vec{b} = \vec{c}         \\
+            \boxed{\vec{c} = (A^T A)^{-1} A^T \vec{b}} \\
+            \boxed{\vec{p} = A(A^T A)^{-1} A^T \vec{b}}
+        \end{align*}
+
+        \note{the coefficients vector is also good to remember, because it is sometimes more useful than the projection}
+        \note{as mentioned before, we can't distribute the inverse sign because A might be rectangular}
+    \end{columns}
+\end{frame}
+
+\subsection{The Projection Matrix}
+
+\begin{frame}
+    \frametitle{The Projection Matrix}
+
+    Recall that for some matrix $A$, the projection $\vec{p} = A(A^T A)^{-1} A^T \vec{b}$.
+
+    \only<+>{
+        \begin{block}{Observation}
+            For a specific $A$, $\vec{p}$ is an unchanging linear transformation of $\vec{b}$.
+            So, we can represent the linear transformation with a matrix $P$.
+            \note{To multiply some vector by a matrix is to apply a linear transformation to the vector.}
+        \end{block}
+    }
+
+    \pause
+
+    Let $\boxed{P = A(A^T A)^{-1} A^T}$.
+    Then, $\vec{p} = P \vec{b}$.
+
+    \only<+>{
+        \begin{alertblock}{Note}
+            $A$ must have linearly independent columns.
+        \end{alertblock}
+    }
+\end{frame}
 
 \section{Properties}
 
@@ -99,11 +214,15 @@
 
 \subsection{$P^2$}
 
-\section{Examples}
+\section{Special Cases}
+
+\subsection{Sanity Check: $A$ Has One Column}
 
 \subsection{Projection from $\boldmath{R}^3$ onto y-axis}
 
 \subsection{Projection from $\boldmath{R}^3$ onto xz-plane}
+
+\subsection{$A$ is an Orthonormal Matrix}
 
 \subsection{$\vec{b} \perp S$}
 
@@ -115,6 +234,21 @@
 
 \subsection{Properties Recapped}
 
-\subsection{Preview: Least Squares Regression}
+\subsection{Conclusion}
+
+\begin{frame}
+    \begin{itemize}
+        \item Applications
+              \begin{itemize}
+                  \item Graphics
+                  \item Least Squares Regression
+              \end{itemize}
+        \item Further Learning
+              \begin{itemize}
+                  \item Practice
+                  \item \textit{Introduction to Linear Algebra} 6th Edition Chapter 4.2 by Gilbert Strang
+              \end{itemize}
+    \end{itemize}
+\end{frame}
 
 \end{document}
