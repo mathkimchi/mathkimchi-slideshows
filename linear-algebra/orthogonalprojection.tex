@@ -47,6 +47,7 @@
     \only<2>{
         \begin{block}{Note}
             In this presentation, projection refers to specifically orthogonal projection, $\vec{p}$ refers to $\proj_S \vec{b}$, and $\vec{e}$ refers to the error vector $\vec{e} = \vec{b} - \vec{p}$.
+            The error vector is also called the rejection.
         \end{block}
     }
 
@@ -162,6 +163,7 @@
 
         \column{0.4\textwidth}
         \note{tell them to try this proof}
+        \note{Hint: ATA is invertible bc A has LI columns}
         \pause
         Then,
         \begin{align*}
@@ -206,6 +208,23 @@
     }
 \end{frame}
 
+\subsection{The Error Matrix}
+
+\begin{frame}
+    \frametitle{The Error Matrix}
+
+    The error vector is $\vec{b}$ projected onto $S^\perp$.
+    \pause
+    Since finding the error vector is also a projection, there should be an error matrix $E$ for some $P$ such that $\vec{e} = E\vec{b}$.
+    \pause
+    \begin{align*}
+        \vec{e} = \vec{b} - \vec{p}     \\
+        \vec{e} = I \vec{b} - P \vec{b} \\
+        \vec{e} = (I - P) \vec{b}       \\
+        \boxed{E = I - P}
+    \end{align*}
+\end{frame}
+
 \section{Properties}
 
 \subsection{Projection Minimizes Error}
@@ -213,6 +232,8 @@
 \subsection{$P^T$}
 
 \subsection{$P^2$}
+
+\subsection{Sanity Check: $E^2$}
 
 \section{Special Cases}
 
