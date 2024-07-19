@@ -261,21 +261,90 @@
     \note{thus, projection minimizes the error's magnitude as well as the error's magnitude squared (foreshadowing LSR)}
 \end{frame}
 
-\subsection{$P^T$}
+\subsection{$P = P^T$}
 
-\subsection{$P^2$}
+\begin{frame}
+    \frametitle{Prove that $P = P^T$.}
 
-\subsection{Sanity Check: $E^2$}
+    \note{recommend them to try this}
+
+    \pause
+
+    \only<+>{
+        \begin{block}{Hint}
+            Start with $P = A(A^T A)^{-1} A^T$.
+        \end{block}
+    }
+
+
+
+    \only<+>{
+        \begin{align*}
+            P   & = A(A^T A)^{-1} A^T            \\
+            P^T & = (A(A^T A)^{-1} A^T)^T        \\
+            P^T & = (A^T)^T ((A^T A)^{-1})^T A^T \\
+            P^T & = A ((A^T A)^T)^{-1} A^T       \\
+            P^T & = A (A^T (A^T)^T)^{-1} A^T     \\
+            P^T & = A (A^T A)^{-1} A^T           \\
+            P^T & = P                            \\
+        \end{align*}
+    }
+\end{frame}
+
+\subsection{$P = P^2$}
+
+\begin{frame}
+    \frametitle{Prove that $P = P^2$.}
+
+    \note{explain why this logically makes sense}
+
+    \note{recommend them to try this}
+
+    \pause
+
+    \begin{align*}
+        P   & = A(A^T A)^{-1} A^T                      \\
+        P^2 & = (A(A^T A)^{-1} A^T)^2                  \\
+        P^2 & = (A(A^T A)^{-1} A^T)(A(A^T A)^{-1} A^T) \\
+        P^2 & = A(A^T A)^{-1} (A^T A) (A^T A)^{-1} A^T \\
+        P^2 & = A(A^T A)^{-1} I A^T                    \\
+        P^2 & = A(A^T A)^{-1} A^T                      \\
+        P^2 & = P                                      \\
+    \end{align*}
+\end{frame}
+
+\subsection{Sanity Check: $E=E^2$}
+\begin{frame}
+    \frametitle{Prove that $E = E^2$.}
+
+    \only<+>{
+        \begin{block}{Reminder}
+            $E$ is also a projection matrix and $E = I - P$.
+        \end{block}
+    }
+
+    \note{recommend them to try this}
+
+    \begin{align*}
+        E   & = I - P     \\
+        E^2 & = (I-P)^2   \\
+        E^2 & = I-2IP+P^2 \\
+        E^2 & = I-2P+P    \\
+        E^2 & = I-P       \\
+    \end{align*}
+\end{frame}
 
 \section{Special Cases}
 
 \subsection{Sanity Check: $A$ Has One Column}
 
-\subsection{Projection from $\boldmath{R}^3$ onto y-axis}
+\subsection{$A$ is an Orthonormal Matrix}
 
 \subsection{Projection from $\boldmath{R}^3$ onto xz-plane}
 
-\subsection{$A$ is an Orthonormal Matrix}
+\subsection{Practice}
+
+\subsection{Projection from $\boldmath{R}^3$ onto y-axis}
 
 \subsection{$\vec{b} \perp S$}
 
