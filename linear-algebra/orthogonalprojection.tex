@@ -229,6 +229,38 @@
 
 \subsection{Projection Minimizes Error}
 
+\begin{frame}
+    \frametitle{Projection Minimizes Error}
+
+    Prove that for a vector $\vec{x} \in S$ where $\vec{x} \neq \vec{p}$ and $\vec{d} = \vec{b} - \vec{x}$, that $||\vec{d}|| > ||\vec{e}||$.
+
+    \note{magnitudes must be non-negative}
+
+    \only<+>{
+        \begin{block}{Hint}
+            $||\vec{d}|| > ||\vec{e}|| \iff \vec{d}^2 > \vec{e}^2$
+        \end{block}
+    }
+
+    \note{vector squared = magnitude of vector squared = vector dot prod with itself}
+
+    \begin{align*}
+        \only<+>{\vec{d}^2              & = (\vec{b} - \vec{x})^2                                                   \\}
+        \only<+>{\vec{d}^2              & = (\vec{b} + \alert{\vec{0}} - \vec{x})^2                                                   \\}
+        \only<+>{\vec{d}^2              & = (\vec{b} \alert{- \vec{p} + \vec{p}} - \vec{x})^2                               \\}
+        \only<+>{\vec{d}^2              & = (\alert{\vec{b} - \vec{p}} + \vec{p} - \vec{x})^2                               \\}
+        \only<+>{\vec{d}^2              & = (\alert{\vec{e}} + \vec{p} - \vec{x})^2                                         \\}
+        \only<+>{\vec{d}^2              & = \vec{e}^2 + 2 \vec{e} \cdot (\vec{p} - \vec{x}) + (\vec{p} - \vec{x})^2 \\}
+        \only<+>{\vec{d}^2              & = \vec{e}^2 + \alert{2 \vec{e} \cdot (\vec{p} - \vec{x})} + (\vec{p} - \vec{x})^2 \\}
+        \only<+->{\vec{d}^2             & = \vec{e}^2 + (\vec{p} - \vec{x})^2                                       \\}
+        \only<+>{\vec{d}^2 - \vec{e}^2  & = (\vec{p} - \vec{x})^2                                                                         \\}
+        \only<+->{\vec{d}^2 - \vec{e}^2 & = (\vec{p} - \vec{x})^2 > 0                                                                         \\}
+        \only<+->{\vec{d}^2             & > \vec{e}^2                                                                                         \\}
+    \end{align*}
+
+    \note{thus, projection minimizes the error's magnitude as well as the error's magnitude squared (foreshadowing LSR)}
+\end{frame}
+
 \subsection{$P^T$}
 
 \subsection{$P^2$}
@@ -255,7 +287,7 @@
 
 \subsection{Properties Recapped}
 
-\subsection{Conclusion}
+\subsection{Next Steps}
 
 \begin{frame}
     \begin{itemize}
