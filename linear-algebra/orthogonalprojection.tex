@@ -336,19 +336,105 @@
 
 \section{Special Cases}
 
-\subsection{Sanity Check: $A$ Has One Column}
+\subsection{Sanity Check: $A$ has One Column}
+
+\begin{frame}
+    \frametitle{Sanity Check: $A$ has One Column}
+
+    \note{This is an informal sanity check}
+
+    Suppose $A = [\vec{a}]$.
+    Then, $\vec{p} = A(A^T A)^{-1}A^Tb$ and $\vec{p} = \frac{\vec{a} \cdot \vec{b}}{\vec{a} \cdot \vec{a}} \vec{a}$.
+
+    \note{mention inner product = dot product}
+    \note{It is easy to see that $A^T A$ in the former equation corresponds to $\vec{a} \cdot \vec{a}$ and since it is inverted, it is the divisor in the latter equation. $A^T b$ corresponds to $\vec{a} \cdot \vec{b}$. the orders do seem off, but since many of the terms in the latter equation are scalars, the order is flexible.}
+\end{frame}
 
 \subsection{$A$ is an Orthonormal Matrix}
 
-\subsection{Projection from $\boldmath{R}^3$ onto xz-plane}
+\begin{frame}
+    \frametitle{$A$ is an Orthonormal Matrix}
 
-\subsection{Practice}
+    \begin{block}{Note}
+        An orthonormal matrix has unit columns all orthogonal to each other.
+        In other words, an orthonormal matrix $Q$ will satisfy $Q^T Q = I$.
+    \end{block}
 
-\subsection{Projection from $\boldmath{R}^3$ onto y-axis}
+    \pause
 
-\subsection{$\vec{b} \perp S$}
+    Then, $P=A(A^T A)^{-1} A^T= A I A^T = A A^T$.
 
-\subsection{$\vec{b} \in S$}
+    \pause
+
+    Additionally, the coefficients vector, $\vec{c} = (A^T A)^{-1} A^T \vec{b}$, will just be $\vec{c} = A^T \vec{b}$.
+\end{frame}
+
+\subsection{Projection from $\mathbb{R}^3$ onto the xz-plane}
+
+\begin{frame}
+    \frametitle{Projection from $\mathbb{R}^3$ onto the xz-plane}
+
+    \only<2>{
+        \begin{block}{Hint}
+            What are a basis of the xz-plane?
+        \end{block}
+    }
+
+    \only<3-5>{
+        $$
+            A =
+            \begin{bmatrix}
+                1 & 0 \\
+                0 & 0 \\
+                0 & 1 \\
+            \end{bmatrix}
+        $$
+    }
+
+    \only<4>{
+        \begin{block}{Note}
+            $A$ is orthonormal.
+        \end{block}
+    }
+
+    \only<5->{
+        $$
+            P = AA^T =
+            \begin{bmatrix}
+                1 & 0 & 0 \\
+                0 & 0 & 0 \\
+                0 & 0 & 1 \\
+            \end{bmatrix}
+        $$
+    }
+
+    \only<6>{
+        \begin{example}
+            $$
+                P
+                \begin{bmatrix}
+                    x \\ y \\ z
+                \end{bmatrix} =
+                \begin{bmatrix}
+                    x \\ 0 \\ z
+                \end{bmatrix}
+            $$
+        \end{example}
+    }
+\end{frame}
+
+\subsection{More Special Cases}
+
+\begin{frame}
+    \frametitle{More Special Cases (Practice)}
+
+    \note{emphasize that these are just the special, interesting cases, and that these problems don't represent most problems.}
+
+    \begin{itemize}
+        \item Find the projection matrix from $\mathbb{R}^3$ onto the y-axis.
+        \item What would $\vec{p}$ be if $\vec{b} \perp S$? What if $\vec{b} \in S$?
+    \end{itemize}
+\end{frame}
 
 \section{Conclusion}
 
@@ -364,6 +450,7 @@
               \begin{itemize}
                   \item Graphics
                   \item Least Squares Regression
+                  \item Orthonormal and Orthogonal Matrices
               \end{itemize}
         \item Further Learning
               \begin{itemize}
