@@ -13,6 +13,14 @@
 % \setbeamercovered{transparent}
 % \setbeameroption{show notes on second screen}
 
+\AtBeginSection{
+    \begin{frame}
+        \frametitle{\insertsection}
+
+        \tableofcontents[sections=\value{section}]
+    \end{frame}
+}
+
 \DeclareMathOperator{\proj}{proj}
 
 \title{Orthogonal Projection}
@@ -85,7 +93,7 @@
         \column{0.5\textwidth}
         \only<1> {
             \begin{example}
-                Draw $\proj_a b$.
+                Draw $\proj_{\vec{a}} \vec{b}$.
             \end{example}
         }
         \only<2>{
@@ -324,6 +332,8 @@
     }
 
     \note{recommend them to try this}
+
+    \pause
 
     \begin{align*}
         E   & = I - P     \\
